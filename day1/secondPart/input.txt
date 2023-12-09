@@ -1,0 +1,26 @@
+int convertString(char input[]){
+    int i;
+    int digit;
+    int firstSet = 0;
+    for (i=0; i<strlen(input); i++){
+              printf("in word loop, input passed is %s \n", &input[i]);
+        char tempDigit;
+          if (isDigit(input[i])){
+              printf("isDigit = true, input[i] = %d", input[i]);
+            digit = input[i] - '0';
+        } else if ((tempDigit = getWordDigit(&input[i]))){
+            digit = tempDigit - '0';
+        }
+        if (!firstSet && digit){
+            firstSet = digit;
+        }
+        printf("digit = %d \n", digit);
+        printf("firstSet is %d \n", firstSet);
+        printf("tempDigit is %d \n", tempDigit);
+    }
+    int returnSum = firstSet * 10 + digit;
+        printf("return is %d \n", returnSum);
+
+    return returnSum;
+}
+
