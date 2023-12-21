@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+#define MAX_ROWS 140
+#define MAX_COLS 140
+void traverseMatrix(char matrix[MAX_ROWS][MAX_COLS]){
+    printf("%s", matrix[2]);
+    for (int i = 0; i < MAX_ROWS; i++){
+        for(int j = 0; j < MAX_COLS; j++){
+//            printf("%c", matrix[i][j]);
+       }
+ //       printf("\n");
+   }
+}
+
+int main(int argc, char *argv[])
+{
+    FILE *filePointer;
+    char matrix[MAX_ROWS][MAX_COLS]= {0};
+
+    filePointer = fopen("./input.txt", "r");
+    if(filePointer == NULL){
+        perror("Error opening file");
+        exit(EXIT_FAILURE);
+    }
+
+    for (int i = 0; i < MAX_ROWS; i++){
+        if(fgets(matrix[i], MAX_COLS, filePointer) == NULL){
+            printf("We found a null at i = %d", i);
+            break;
+        }
+        int c;
+        while((c = fgetc(filePointer)) != '\n' && c!=EOF);
+    }
+
+    fclose(filePointer);
+
+    traverseMatrix(matrix);
+
+    return EXIT_SUCCESS;
+}
